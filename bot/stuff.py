@@ -56,12 +56,12 @@ async def usage(event):
 
 async def start(event):
     await event.reply(
-        f"Hi `{event.sender.first_name}`\nThis is A CompressorQueue Which Can Encode Videos.\nReduce Size of Videos With Negligible Quality Change\nU can Generate Samples/screenshots too.",
+        f"Hi `{event.sender.first_name}`\nThis is a private encoder bot created for @Animes_Guy! this can be only accessed by the owner of Anime guy!! So don't waste your time 😜",
         buttons=[
             [Button.inline("HELP", data="ihelp")],
             [
-                Button.url("SOURCE CODE", url="github.com/1Danish-00/"),
-                Button.url("DEVELOPER", url="t.me/danish_00"),
+                Button.url("ANIMES GUY!!", url="t.me/Animes_Guy"),
+                Button.url("TELEGRAM GUY!!", url="t.me/THE_TGGUY"),
             ],
         ],
     )
@@ -81,13 +81,13 @@ async def ihelp(event):
 
 
 async def beck(event):
-    await event.edit(
-        f"Hi `{event.sender.first_name}`\nThis is A CompressorQueue Which Can Encode Videos.\nReduce Size of Videos With Negligible Quality Change\nU can Generate Samples/screenshots too.",
+    await event.reply(
+        f"Hi `{event.sender.first_name}`\nThis is a private encoder bot created for @Animes_Guy! this can be only accessed by the owner of Anime guy!! So don't waste your time 😜",
         buttons=[
             [Button.inline("HELP", data="ihelp")],
             [
-                Button.url("SOURCE CODE", url="github.com/1Danish-00/"),
-                Button.url("DEVELOPER", url="t.me/danish_00"),
+                Button.url("ANIMES GUY!!", url="t.me/Animes_Guy"),
+                Button.url("TELEGRAM GUY!!", url="t.me/THE_TGGUY"),
             ],
         ],
     )
