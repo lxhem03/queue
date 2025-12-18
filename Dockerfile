@@ -1,12 +1,9 @@
 FROM python:3.9.7-slim-buster
 
-# Create and set working directory
 WORKDIR /bot
 
-# Set environment variable for non-interactive apt
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Update apt sources to use archive.debian.org for Buster
 RUN echo "deb http://archive.debian.org/debian buster main" > /etc/apt/sources.list && \
     echo "deb http://archive.debian.org/debian-security buster/updates main" >> /etc/apt/sources.list && \
     apt-get update && \
@@ -16,18 +13,22 @@ RUN echo "deb http://archive.debian.org/debian buster main" > /etc/apt/sources.l
     pv \
     jq \
     python3-dev \
-    ffmpeg \
-    mediainfo && \
+    mediainfo \
+    ca-certificates \
+    xz-utils && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy application files
+RUN wget -O ffmpeg.tar.xz https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz && \
+    tar -xJf ffmpeg.tar.xz && \
+    mv ffmpeg-master-latest-linux64-gpl/bin/ffmpeg /usr/local/bin/ffmpeg && \
+    mv ffmpeg-master-latest-linux64-gpl/bin/ffprobe /usr/local/bin/ffprobe && \
+    chmod +x /usr/local/bin/ffmpeg /usr/local/bin/ffprobe && \
+    rm -rf ffmpeg.tar.xz ffmpeg-master-latest-linux64-gpl
+
 COPY . .
 
-# Install Python dependencies
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-# Set executable permissions for run.sh (if needed)
 RUN chmod +x run.sh
 
-# Specify the command to run
 CMD ["bash", "run.sh"]
