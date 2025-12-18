@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: queue
+    restart: unless-stopped
+    env_file:
+      - .env
+    # Optional: mount a volume if you want persistent data (e.g., logs, database, etc.)
+    # volumes:
+    #   - ./data:/bot/data
+
+    # Keeps the container running and shows logs in real-time
+    tty: true
+    stdin_open: true
